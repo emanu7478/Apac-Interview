@@ -106,6 +106,41 @@ function Home(props) {
     );
   };
 
+  const renderQuotations = ({item}) => {
+    return (
+      <View style={style.appointmentContainer}>
+        <View style={{...style.centerAlign, flex: 3}}>
+          <Text style={style.surveyDateText}>
+            {new Date(item.date).getDate()}{' '}
+            {months[new Date(item.date).getMonth()]}{' '}
+            {new Date(item.date).getFullYear()}
+            {'  '}
+            {new Date(item.date).getHours()}
+            {':'}
+            {new Date(item.date).getMinutes()}
+          </Text>
+        </View>
+        <View style={{...style.centerAlign, flex: 2}}>
+          <Text
+            style={{
+              color:
+                item.status === true
+                  ? constant.LIME_GREEN
+                  : constant.CHERRY_RED,
+              fontSize: 10,
+            }}>
+            {item.status === true ? 'Accepted' : 'Customer Rejected'}
+          </Text>
+        </View>
+        <View style={{...style.centerAlign, flex: 3}}>
+          <TouchableHighlight>
+            <Icon name="edit" type="feather" size={15} />
+          </TouchableHighlight>
+        </View>
+      </View>
+    );
+  };
+
   const renderData = ({item}) => {
     return (
       <View style={{...style.wrapListContainer, width: width - 10}}>
@@ -266,7 +301,7 @@ function Home(props) {
                   {item.data.customer_quotation.length !== 0 ? (
                     <FlatList
                       data={item.data.customer_quotation}
-                      renderItem={renderAppointments}
+                      renderItem={renderQuotations}
                       keyExtractor={(data) => data.id.toString()}
                     />
                   ) : (
