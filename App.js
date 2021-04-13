@@ -3,13 +3,17 @@ import * as React from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {NavigationContainer} from '@react-navigation/native';
 import AppIndex from './src';
+import {Provider} from 'react-redux';
+import store from './src/redux/store';
 
 function App() {
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
-        <AppIndex />
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <AppIndex />
+        </NavigationContainer>
+      </Provider>
     </SafeAreaProvider>
   );
 }
