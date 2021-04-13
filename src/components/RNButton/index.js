@@ -26,7 +26,7 @@ const RNButton = (props) => {
             height: height ? height : 45,
             backgroundColor: backgroundColor
               ? backgroundColor
-              : constant.SECONDARY_COLOR,
+              : constant.BLUE_COLOR,
             borderRadius: borderRadius ? borderRadius : 5,
           },
         ]}>
@@ -49,6 +49,7 @@ const style = StyleSheet.create({
   container: {
     alignItems: 'center',
     elevation: 7,
+    paddingHorizontal: 5,
     marginVertical: 10,
     justifyContent: 'center',
   },
